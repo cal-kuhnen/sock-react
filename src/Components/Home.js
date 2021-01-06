@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import '../index0.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const Home = () => {
   return(
     <div>
-    <div className="content">
+    <div className="h-content">
       <div className="main">
         Welcome to SOCK Radio.
         <div className="BHH-submit">
