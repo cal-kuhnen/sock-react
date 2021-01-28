@@ -1,0 +1,112 @@
+/* --- Navbar ---*/
+nav
+{
+  position: relative;
+  font-family: "TeX", sans-serif;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home
+{
+  width: 40%;
+  height: 150px;
+  margin-left: 2%;
+}
+
+.buttons
+{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-right: 3.5%;
+}
+
+.navButtons
+{
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  font-size: 3.5em;
+  transition: color 0.2s, background-color 0.2s linear, box-shadow 0.2s;
+	/*border: solid 3px black;*/
+	border-radius: 20px;
+	padding: 0% 2% 0% 2%;
+	margin: 0px 5px 0px 5px;
+	background-color: #fff;
+}
+
+	.drop
+	{
+		box-shadow: 5px 5px 0px #fff000;
+		position: relative;
+		display: inline-block;
+	}
+
+		.drop:hover
+		{
+			background-color: #fff8cc;
+		}
+
+	.sched
+	{
+		box-shadow: 5px 5px 0px #FF0000;
+	}
+
+		.sched:hover
+		{
+			background-color: #ffdddd;
+		}
+
+	.about
+	{
+		box-shadow: 5px 5px 0px #3333FF;
+	}
+
+		.about:hover
+		{
+			background-color: #ddddFF;
+		}
+
+.dropContent {
+  display: none;
+  position: absolute;
+}
+
+	.drop:hover .dropContent
+	{
+	  display: block;
+	}
+
+.shows
+{
+	top: 10px;
+	background-color: #fff;
+	/*border: solid 3px black;*/
+	border-radius: 20px;
+	margin-top: 15px;
+	padding: 0px 20px 0px 20px;
+	margin-left: -25px;
+	text-align: center;
+	box-shadow: 5px 5px 0px #000;
+	transition: background-color 0.1s, box-shadow 0.1s;
+}
+
+	.shows:hover
+	{
+		background-color: #dddddd;
+	}
+
+	.shows:active
+	{
+		box-shadow: none;
+	}
+
+div.navButtons:active
+{
+	box-shadow: none;
+	/*margin: 5px 0px 0px 5px; */
+}

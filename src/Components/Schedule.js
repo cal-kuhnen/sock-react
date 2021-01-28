@@ -5,42 +5,38 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Radio from './Radio';
+import '../css/schedule.css';
 
 const Schedule = () => {
   return(
-    <div class="content">
-      <div class="schedule">
-  			<p class="bold">All shows at 8PM EST unless otherwise specified.</p>
-        <ul class="day">
-  				<li><span class="contrast">Sunday</span>
-  					<ul class="show">
-  						<li><a href="../ration">Ration Radio w/DJ Rumsey (alternating)</a></li>
+    <div className="content">
+      <div className="schedule">
+        <div className="s-main">
+  			  <p className="bold">All shows at 8PM EST unless otherwise specified.</p>
+        </div>
+        <ul className="day">
+  				<li><span className="contrast">Sunday</span>
+  					<ul className="show">
+  						<li><a className="schedLink" href="../ration">Ration Radio w/DJ Rumsey (alternating)</a></li>
   					</ul>
   				</li>
-  				<li><span class="contrast">Wednesday</span>
-  					<ul class="show">
-  						<li><a href="../CTA">Cracking the Algorithm w/Asif, John Henry, and Matt</a></li>
+  				<li><span className="contrast">Wednesday</span>
+  					<ul className="show">
+              <li><a className="schedLink" href="../CTA">Cracking the Algorithm w/Asif, John Henry, and Matt</a></li>
   					</ul>
   				</li>
-  				<li><span class="contrast">Thursday</span>
-  					<ul class="show">
-  						<li><a href="../bhh">Broken Hearts Hotline</a></li>
+  				<li><span className="contrast">Thursday</span>
+  					<ul className="show">
+  						<li><a className="schedLink" href="../bhh">Broken Hearts Hotline</a></li>
   					</ul>
   				</li>
-  				<li><span class="contrast">Saturday</span>
-  					<ul class="show">
-  						<li><a href="../garden">Garden Time (3PM, alternating)</a></li>
+  				<li><span className="contrast">Saturday</span>
+  					<ul className="show">
+  						<li><a className="schedLink" href="../garden">Garden Time (3PM, alternating)</a></li>
   					</ul>
   				</li>
   			</ul>
-      </div>
-      <div id="audio">
-        <audio id="media" preload="none">
-          <source src="https://stream.sock.rocks/kenny-test" type="audio/mpeg"></source>
-        </audio>
-        <button id="play">&#9654&#xFE0E</button>
-        <p id="load">loading...</p>
-        <button id="pause">| |</button>
       </div>
     </div>
   )

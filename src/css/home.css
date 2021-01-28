@@ -1,0 +1,165 @@
+@font-face
+{
+	font-family: "TeX";
+	src: url("../fonts/TeX/texgyreheros-regular-webfont.woff");
+}
+
+@font-face
+{
+	font-family: "TeX";
+	src: url("../fonts/TeX/texgyreheros-bold-webfont.woff");
+	font-weight: bold;
+}
+
+@font-face
+{
+	font-family: "HK";
+	src: url("../fonts/HKGrotesk-Medium.otf");
+}
+
+@font-face
+{
+	font-family: "HK";
+	src: url("../fonts/HKGrotesk-Bold.otf");
+	font-weight: bold;
+}
+
+html {
+	overflow-y: scroll;
+	height: 100%;
+}
+
+body
+{
+  margin: 0;
+  background-color: #f2f2f8;
+	line-height: normal;
+	overflow-x: hidden;
+}
+
+/* --- Home Content --- */
+.h-content
+{
+  width: 60%;
+  margin-top: 50px;
+  height: auto;
+  font-family: "TeX", sans-serif;
+  color: #000;
+	float: left;
+	margin-left: 2%;
+}
+
+.BHH-submit
+{
+	width: 100%;
+	font-size: 5em;
+	font-weight: bold;
+}
+
+.main
+{
+  width: 100%;
+	font-size: 5em;
+	font-weight: bold;
+	/*background-color: #fff;
+	border-radius: 20px;
+	box-shadow: 5px 5px 0px #000;*/
+	padding-left: 1%;
+}
+
+h6
+{
+	font-size: 0.5em;
+}
+
+p.bold
+{
+	margin-top: 0;
+	font-weight: bold;
+	color: #443300;
+	margin-left: 1%;
+}
+
+
+/* --- Links --- */
+a.navLink
+{
+	color: #000;
+}
+
+a.navLink:visited
+{
+	color: #000;
+}
+
+a.schedLink
+{
+	color: #000;
+}
+
+a:link
+{
+  text-decoration: none;
+}
+
+
+img
+{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.audio
+{
+  width: 30%;
+  color: #000;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+  align-items: center;
+	font-family: "TeX";
+	font-size: 5em;
+	border-radius: 50px;
+	background-color: #fff;
+	box-shadow: 5px 5px 0px #000;
+	float: right;
+	margin-top: 50px;
+	margin-right: 2%;
+}
+
+button
+{
+	-webkit-appearance: none;
+	background-color: transparent;
+	border: 0;
+	color: #000;
+	font-size: 1em;
+
+}
+
+button:hover
+{
+	color: #8888ff;
+}
+
+#pause
+{
+	display: none;
+	font-weight: 700;
+}
+
+#load
+{
+	display: none;
+	font-size: 0.6em;
+}
+
+.footer
+{
+  font-family: "TeX", sans-serif;
+  font-weight: bold;
+	margin-top: 200px;
+  margin-left: 2%;
+  color: #000;
+  font-size: 2em;
+}

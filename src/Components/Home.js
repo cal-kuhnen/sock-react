@@ -5,6 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Radio from './Radio';
+import '../css/home.css';
 
 const Home = () => {
   return(
@@ -16,19 +18,11 @@ const Home = () => {
         <h6> <a href="https://drive.google.com/open?id=1tp4Qbi2ShxkhSHkMdFH3DbZnuaG_hilBu1MRFgES0H8"> {'\uD83D\uDC94'} Submit ur relationship problems HERE {'\uD83D\uDC94'} </a></h6>
         </div>
       </div>
-      <div id="audio">
-        <audio id="media" preload="none">
-          <source src="https://stream.sock.rocks/kenny-test" type="audio/mpeg">
-          </source>
-        </audio>
-        <button id="play">{'\u25BA'}</button>
-        <p id="load">loading...</p>
-        <button id="pause">| |</button>
+      <div className="footer">
+        <p>contact us: hello@sock.rocks</p>
       </div>
     </div>
-    <div className="footer">
-      <p>contact us: hello@sock.rocks</p>
-    </div>
+
     </div>
   )
 }

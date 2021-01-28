@@ -7,28 +7,29 @@ import {
 } from "react-router-dom";
 import YellowLogo from "../pics/sockLogo01_yellow_med.png";
 import SockLogo from "../pics/sockLogo01.png";
+import '../css/nav.css';
 
 const Nav = () => {
   return(
       <nav>
         <div className="home">
-          <img src={SockLogo} alt="logo saying sock radio"/>
+          <Link to="./"><img src={SockLogo} alt="logo saying sock radio"/></Link>
         </div>
         <div className="buttons">
           <div className="drop navButtons">
             shows
             <div className="dropContent">
-              <a href="./bhh">hearts</a>
-              <a href="./garden">garden</a>
-    					<a href="./ration">ration</a>
-    					<a href="./CTA">C.T.A.</a>
+              <div className="shows"><a href="./bhh" className="navLink">hearts</a></div>
+              <div className="shows"><a href="./garden" className="navLink">garden</a></div>
+    					<div className="shows"><a href="./ration" className="navLink">ration</a></div>
+    					<div className="shows"><a href="./CTA" className="navLink">C.T.A.</a></div>
             </div>
           </div>
-          <div className="navButtons schedule">
-            <Link to="./schedule">schedule</Link>
+          <div className="navButtons sched">
+            <Link to="./schedule" className="navLink">schedule</Link>
           </div>
     			<div className="navButtons about">
-    				<Link to="/about">about</Link>
+    				<Link to="/about" className="navLink">about</Link>
     			</div>
         </div>
       </nav>

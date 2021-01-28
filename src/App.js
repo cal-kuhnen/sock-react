@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Nav from './Components/Nav'
 import Home from './Components/Home'
 import Schedule from './Components/Schedule'
+import Radio from './Components/Radio'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +10,6 @@ import {
   Link
 } from "react-router-dom";
 import './reset.css';
-import './index0.css';
 
 class App extends Component {
 
@@ -20,6 +20,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+          <Radio />
         </div>
         <Switch>
           <Route path='/schedule'>
