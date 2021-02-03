@@ -9,31 +9,41 @@ const Radio = () => {
   var playable = false;
 
   const start = () => {
-    setStatus("yay");
-    audio.play();
+    if (status === '\u25BA') {
+      audio.play();
+      setStatus('| |');
+    }
   }
 
   // check for stream availability every 10 seconds unless it is already live
   const loader = async () => {
-    if (status != "yay" && audio.networkState === 3) {
+    console.log("called");
+    await new Promise(r => setTimeout(r, 10000));
+    if (status != '\u25BA' && audio.networkState === 3) {
       audio.load();
-      console.log("called");
-      await new Promise(r => setTimeout(r, 10000));
       loader();
-    }
-    else {
-      setStatus("yay");
+      }
+  }
+
+  console.log(audio.networkState);
+
+  audio.onerror = () => {
+    if (status === "loading...") {
+      setStatus("offline");
     }
   }
 
   // first check of stream for fastest load possible
   audio.oncanplay = () => {
     playable = true;
-    setStatus("yay");
+    console.log("playable");
+    if (status != '\u25BA' && status != '| |') {
+      setStatus('\u25BA');
+    }
   }
 
   // call loader if stream not live (status not changed)
-  if (status === "loading...") {
+  if (status === "offline") {
     loader();
   }
 
