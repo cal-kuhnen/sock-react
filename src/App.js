@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import './reset.css';
+import './css/livebar.css';
 
 class App extends Component {
 

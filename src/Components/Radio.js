@@ -45,6 +45,7 @@ const Radio = () => {
     playable = true;
     console.log("playable");
     if (status != '\u25BA' && status != 'I I') {
+      document.querySelector(".audio").className = "audio live";
       setStatus('\u25BA');
     }
   }
