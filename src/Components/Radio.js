@@ -1,17 +1,24 @@
 import React, { Component, useState } from 'react'
-import ReactAudioPlayer from 'react-audio-player';
+
+var audio = new Audio("https://stream.sock.rocks/drive");
 
 const Radio = () => {
 
   const [status, setStatus] = useState("loading...");
 
-  let audio = new Audio("https://stream.sock.rocks/drive");
   var playable = false;
 
   const start = () => {
     if (status === '\u25BA') {
+      console.log("playing audio");
+      audio.load();
       audio.play();
-      setStatus('| |');
+      setStatus('I I');
+    }
+    else if (status === 'I I') {
+      console.log("pausing audio");
+      audio.pause();
+      setStatus('\u25BA');
     }
   }
 
@@ -19,7 +26,7 @@ const Radio = () => {
   const loader = async () => {
     console.log("called");
     await new Promise(r => setTimeout(r, 10000));
-    if (status != '\u25BA' && audio.networkState === 3) {
+    if (status != '\u25BA' && status != 'I I' && audio.networkState === 3) {
       audio.load();
       loader();
       }
@@ -37,7 +44,7 @@ const Radio = () => {
   audio.oncanplay = () => {
     playable = true;
     console.log("playable");
-    if (status != '\u25BA' && status != '| |') {
+    if (status != '\u25BA' && status != 'I I') {
       setStatus('\u25BA');
     }
   }
@@ -48,9 +55,9 @@ const Radio = () => {
   }
 
   return (
-    <button className="audio" onClick={start}>
+    <div className="audio" onClick={start}>
       {status}
-    </button>
+    </div>
   )
 }
 

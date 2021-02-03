@@ -5,7 +5,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Radio from './Radio';
 import '../css/schedule.css';
 
 const Schedule = () => {

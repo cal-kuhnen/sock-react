@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import Nav from './Components/Nav'
-import Home from './Components/Home'
-import Schedule from './Components/Schedule'
-import Radio from './Components/Radio'
+import React, { Component } from 'react';
+import Nav from './Components/Nav';
+import Home from './Components/Home';
+import Schedule from './Components/Schedule';
+import About from './Components/About';
+import Radio from './Components/Radio';
+import Chat from './Components/Chat';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,11 +22,17 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          <Radio />
+          <div className='live-content'>
+            <Radio />
+            <Chat />
+          </div>
         </div>
         <Switch>
           <Route path='/schedule'>
             <Schedule />
+          </Route>
+          <Route path='/about'>
+            <About />
           </Route>
           <Route path='/'>
             <Home />

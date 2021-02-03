@@ -1,0 +1,30 @@
+.desc
+{
+	font-weight: normal;
+	font-size: 0.6em;
+}
+
+.a-content
+{
+  width: 60%;
+  margin-top: 50px;
+  height: auto;
+  color: #000;
+	float: left;
+	margin-left: 2%;
+  font-size: 5em;
+  padding-bottom: 2vw;
+}
+
+.a-main
+{
+  background-color: #fff;
+	border-radius: 20px;
+	box-shadow: 5px 5px 0px #000;
+  padding-bottom: 5px;
+}
+
+p
+{
+  margin-left: 1%;
+}
