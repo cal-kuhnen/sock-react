@@ -125,6 +125,7 @@ nav
   nav {
     display: block;
     height: auto;
+    margin-top: 10px;
   }
 
   .buttons {
@@ -140,6 +141,14 @@ nav
   }
 
   .home {
-    width: 100%;
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-link {
+    display: flex;
+    justify-content: center;
   }
 }

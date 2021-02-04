@@ -61,3 +61,23 @@ ul
 	border-radius: 20px;
 	box-shadow: 5px 5px 0px #000;
 }
+
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 94%;
+    margin-left: 3%;
+  }
+
+  .schedule {
+    font-size: 3em;
+  }
+
+  ul {
+    padding: none;
+    -webkit-padding-start: 0;
+  }
+
+  .show {
+    margin-top: 10px;
+  }
+}

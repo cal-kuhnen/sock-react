@@ -65,9 +65,6 @@ const Radio = () => {
 
   return (
     <div className="audio" onClick={start}>
-      <div className='notification'>
-        • LIVE
-      </div>
       {status}
     </div>
   )

@@ -135,3 +135,18 @@ img
   color: #000;
   font-size: 2em;
 }
+
+@media only screen and (max-width: 600px) {
+	.h-content {
+		width: 94%;
+		margin-left: 3%;
+	}
+
+	.main {
+		font-size: 3em;
+	}
+
+	.bhh-submit {
+		font-size: 2em;
+	}
+}

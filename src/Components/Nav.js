@@ -12,7 +12,7 @@ const Nav = () => {
   return(
       <nav>
         <div className="home">
-          <NavLink to="/" exact={true}><img src={SockLogo} alt="logo saying sock radio"/></NavLink>
+          <NavLink to="/" className="home-link" exact={true}><img src={SockLogo} alt="logo saying sock radio"/></NavLink>
         </div>
         <div className="buttons">
           <div className="drop navButtons">

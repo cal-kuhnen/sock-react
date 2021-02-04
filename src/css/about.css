@@ -29,3 +29,11 @@ p
   margin-left: 2%;
   margin-right: 2%;
 }
+
+@media only screen and (max-width: 600px) {
+  .a-content {
+    width: 94%;
+    margin-left: 3%;
+    font-size: 3em;
+  }
+}
