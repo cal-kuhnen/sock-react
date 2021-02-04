@@ -49,10 +49,11 @@
 	background-color: #fff;
 	box-shadow: 5px 5px 0px #000;
 	margin-top: 20px;
-	display: flex;
-	justify-content: center;
 	padding-bottom: 10px;
   padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 #minnit
