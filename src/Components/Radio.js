@@ -1,12 +1,10 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 
 var audio = new Audio("https://stream.sock.rocks/drive");
 
 const Radio = () => {
 
   const [status, setStatus] = useState("loading...");
-
-  var playable = false;
 
   const start = () => {
     if (status === '\u25BA') {
@@ -20,13 +18,14 @@ const Radio = () => {
       audio.pause();
       setStatus('\u25BA');
     }
+    console.log(status);
   }
 
   // check for stream availability every 10 seconds unless it is already live
   const loader = async () => {
-    console.log("called");
     await new Promise(r => setTimeout(r, 10000));
-    if (status !== '\u25BA' && status !== 'I I') {
+    console.log(status);
+    if (audio.networkState === 3 || audio.networkState === 0) {
       audio.load();
       loader();
       }
@@ -43,7 +42,6 @@ const Radio = () => {
 
   // first check of stream for fastest load possible
   audio.oncanplay = () => {
-    playable = true;
     console.log("playable");
     if (status !== '\u25BA' && status !== 'I I') {
       document.querySelector(".audio").className = "audio live";
@@ -51,16 +49,20 @@ const Radio = () => {
     }
   }
 
-  // handle end of stream to keep audio from looping, change status to offline
+  // handle end of stream to keep audio from looping, call load() to force error
+  // which ensures loader() fails to run because of networkState being 3 (so dumb)
   audio.onended = () => {
-    setStatus("offline");
     document.querySelector(".audio").className = "audio";
+    audio.load();
   }
 
-  // call loader if stream not live (status not changed)
-  if (status === "offline") {
-    loader();
-  }
+  // call loader if stream not live
+  useEffect(() => {
+    if (status === "offline") {
+      console.log("calling loader");
+      loader();
+    }
+  });
 
   return (
     <div className="audio" onClick={start}>
