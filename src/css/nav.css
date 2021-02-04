@@ -120,3 +120,26 @@ nav
 	box-shadow: none;
 	/*margin: 5px 0px 0px 5px; */
 }
+
+@media only screen and (max-width: 600px) {
+  nav {
+    display: block;
+    height: auto;
+  }
+
+  .buttons {
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .navButtons {
+    font-size: 2em;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .home {
+    width: 100%;
+  }
+}
