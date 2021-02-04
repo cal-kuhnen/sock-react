@@ -19,10 +19,10 @@ const Nav = () => {
           <div className="drop navButtons">
             shows
             <div className="dropContent">
-              <div className="shows"><a href="./bhh" className="navLink">hearts</a></div>
-              <div className="shows"><a href="./garden" className="navLink">garden</a></div>
-    					<div className="shows"><a href="./ration" className="navLink">ration</a></div>
-    					<div className="shows"><a href="./CTA" className="navLink">C.T.A.</a></div>
+              <div className="shows"><a href="./bhh" target="_blank" className="navLink">hearts</a></div>
+              <div className="shows"><a href="./garden" target="_blank" className="navLink">garden</a></div>
+    					<div className="shows"><a href="./ration" target="_blank" className="navLink">ration</a></div>
+    					<div className="shows"><a href="./CTA" target="_blank" className="navLink">C.T.A.</a></div>
             </div>
           </div>
           <div className="navButtons sched">

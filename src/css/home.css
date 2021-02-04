@@ -49,27 +49,44 @@ body
 	margin-left: 2%;
 }
 
-.BHH-submit
+.bhh-submit
 {
 	width: 100%;
-	font-size: 1.5em;
+	font-size: 5em;
 	font-weight: bold;
+	background-color: #fff;
+	border-radius: 20px;
+	box-shadow: 5px 5px 0px #000;
+	transition: background-color 0.2s, box-shadow 0.2s;
 }
+
+	.bhh-submit:hover
+	{
+		background-color: #ddd;
+	}
+
+	.bhh-submit:active
+	{
+		box-shadow: none;
+	}
 
 .main
 {
-  width: 100%;
+  width: 99%;
 	font-size: 5em;
 	font-weight: bold;
-	/*background-color: #fff;
+	background-color: #fff;
 	border-radius: 20px;
-	box-shadow: 5px 5px 0px #000;*/
+	box-shadow: 5px 5px 0px #000;
 	padding-left: 1%;
+	margin-bottom: 50px;
 }
 
-h6
+a.submission
 {
-	font-size: 0.5em;
+	margin-left: 1%;
+	display: block;
+	color: #000;
 }
 
 p.bold

@@ -13,7 +13,7 @@ nav
 .home
 {
   width: 40%;
-  height: 150px;
+  height: 160px;
   margin-left: 2%;
 }
 
@@ -21,8 +21,8 @@ nav
 {
   display: flex;
   justify-content: space-between;
-  width: 70%;
-  margin-right: 3.5%;
+  width: 60%;
+  margin-right: 2%;
 }
 
 .navButtons

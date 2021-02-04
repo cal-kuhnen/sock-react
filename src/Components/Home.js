@@ -13,10 +13,10 @@ const Home = () => {
     <div>
     <div className="h-content">
       <div className="main">
-        Welcome to SOCK Radio.
-        <div className="BHH-submit">
-        <h6> <a href="https://drive.google.com/open?id=1tp4Qbi2ShxkhSHkMdFH3DbZnuaG_hilBu1MRFgES0H8"> {'\uD83D\uDC94'} Submit ur relationship problems HERE {'\uD83D\uDC94'} </a></h6>
-        </div>
+        Welcome to SOCK Radio!
+      </div>
+      <div className="bhh-submit">
+        <a target="_blank" className="submission" href="https://drive.google.com/open?id=1tp4Qbi2ShxkhSHkMdFH3DbZnuaG_hilBu1MRFgES0H8"> {'\uD83D\uDC94'} Submit ur relationship problems HERE {'\uD83D\uDC94'} </a>
       </div>
       <div className="footer">
         <p>contact us: hello@sock.rocks</p>
