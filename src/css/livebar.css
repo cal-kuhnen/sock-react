@@ -28,6 +28,20 @@
 	box-shadow: 5px 5px 0px #000, inset 0px 0px 0px 6px #ff0000;
 }
 
+.live .notification
+{
+  opacity: 100;
+}
+
+.notification
+{
+  position: absolute;
+  margin-top: -150px;
+  margin-left: -20vw;
+  font-size: 0.3em;
+  opacity: 0;
+}
+
 #chat
 {
 	width: 100%;

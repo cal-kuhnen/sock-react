@@ -26,7 +26,7 @@ const Radio = () => {
   const loader = async () => {
     console.log("called");
     await new Promise(r => setTimeout(r, 10000));
-    if (status != '\u25BA' && status != 'I I' && audio.networkState === 3) {
+    if (status !== '\u25BA' && status !== 'I I') {
       audio.load();
       loader();
       }
@@ -45,10 +45,16 @@ const Radio = () => {
   audio.oncanplay = () => {
     playable = true;
     console.log("playable");
-    if (status != '\u25BA' && status != 'I I') {
+    if (status !== '\u25BA' && status !== 'I I') {
       document.querySelector(".audio").className = "audio live";
       setStatus('\u25BA');
     }
+  }
+
+  // handle end of stream to keep audio from looping, change status to offline
+  audio.onended = () => {
+    setStatus("offline");
+    document.querySelector(".audio").className = "audio";
   }
 
   // call loader if stream not live (status not changed)
@@ -58,6 +64,9 @@ const Radio = () => {
 
   return (
     <div className="audio" onClick={start}>
+      <div className='notification'>
+        • LIVE
+      </div>
       {status}
     </div>
   )
