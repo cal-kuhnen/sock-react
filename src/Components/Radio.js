@@ -6,6 +6,9 @@ const Radio = () => {
 
   const [status, setStatus] = useState("loading...");
 
+  /* play/pause function. load() is called to catch stream live, otherwise if
+     the stream loads, clicking play starts the audio from when it loaded not
+     at the current time */
   const start = () => {
     if (status === '\u25BA') {
       console.log("playing audio");
@@ -18,20 +21,18 @@ const Radio = () => {
       audio.pause();
       setStatus('\u25BA');
     }
-    console.log(status);
   }
 
-  // check for stream availability every 10 seconds unless it is already live
+  /* check for stream availability every 10 seconds unless it is already live
+     checking the state does not work within here, hence using networkState to
+     check if it should run */
   const loader = async () => {
     await new Promise(r => setTimeout(r, 10000));
-    console.log(status);
     if (audio.networkState === 3 || audio.networkState === 0) {
       audio.load();
       loader();
       }
   }
-
-  console.log(audio.networkState);
 
   audio.onerror = () => {
     if (status === "loading..." || status ==='I I') {
@@ -42,7 +43,6 @@ const Radio = () => {
 
   // first check of stream for fastest load possible
   audio.oncanplay = () => {
-    console.log("playable");
     if (status !== '\u25BA' && status !== 'I I') {
       document.querySelector(".audio").className = "audio live";
       setStatus('\u25BA');
@@ -59,7 +59,6 @@ const Radio = () => {
   // call loader if stream not live
   useEffect(() => {
     if (status === "offline") {
-      console.log("calling loader");
       loader();
     }
   });
