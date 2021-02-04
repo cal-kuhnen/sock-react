@@ -32,7 +32,7 @@ const Schedule = () => {
   				</li>
   				<li><span className="contrast">Saturday</span>
   					<ul className="show">
-  						<li><a className="schedLink" href="../garden">Garden Time (3PM, alternating)</a></li>
+  						<li><a className="schedLink" href="../garden">Fatal Exception</a></li>
   					</ul>
   				</li>
   			</ul>

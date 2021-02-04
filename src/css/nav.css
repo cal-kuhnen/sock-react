@@ -56,6 +56,11 @@ nav
 		box-shadow: 5px 5px 0px #FF0000;
 	}
 
+  .sched-select
+  {
+    background-color: #ffdddd;
+  }
+
 		.sched:hover
 		{
 			background-color: #ffdddd;
@@ -65,6 +70,11 @@ nav
 	{
 		box-shadow: 5px 5px 0px #3333FF;
 	}
+
+  .about-select
+  {
+    background-color: #ddddff;
+  }
 
 		.about:hover
 		{
@@ -105,7 +115,7 @@ nav
 		box-shadow: none;
 	}
 
-div.navButtons:active
+.navButtons:active
 {
 	box-shadow: none;
 	/*margin: 5px 0px 0px 5px; */
