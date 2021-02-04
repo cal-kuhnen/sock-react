@@ -35,7 +35,8 @@ const Radio = () => {
   console.log(audio.networkState);
 
   audio.onerror = () => {
-    if (status === "loading...") {
+    if (status === "loading..." || status ==='I I') {
+      document.querySelector(".audio").className = "audio";
       setStatus("offline");
     }
   }
