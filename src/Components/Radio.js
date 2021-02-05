@@ -42,7 +42,7 @@ const Radio = () => {
   }
 
   // first check of stream for fastest load possible
-  audio.oncanplay = () => {
+  audio.onloadedmetadata = () => {
     if (status !== '\u25BA' && status !== 'I I') {
       document.querySelector(".audio").className = "audio live";
       setStatus('\u25BA');

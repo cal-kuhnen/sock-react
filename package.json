@@ -1,6 +1,6 @@
 {
   "name": "sock-radio",
-  "homepage": "https://sock.rocks/test/",
+  "homepage": "https://sock.rocks/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
