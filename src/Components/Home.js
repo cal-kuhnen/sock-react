@@ -1,11 +1,4 @@
-import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Radio from './Radio';
+import React from 'react'
 import '../css/home.css';
 
 const Home = () => {

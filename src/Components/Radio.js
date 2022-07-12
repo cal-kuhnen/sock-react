@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 var audio = new Audio("https://stream.sock.rocks/drive");
 

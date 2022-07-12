@@ -1,10 +1,5 @@
-import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink
-} from "react-router-dom";
-import YellowLogo from "../pics/sockLogo01_yellow_med.png";
+import React from 'react'
+import { BrowserRouter  as NavLink } from "react-router-dom";
 import SockLogo from "../pics/sockLogo01.png";
 import '../css/nav.css';
 

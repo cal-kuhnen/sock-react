@@ -8,8 +8,7 @@ import Chat from './Components/Chat';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import './reset.css';
 import './css/livebar.css';
