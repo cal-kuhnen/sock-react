@@ -1,5 +1,9 @@
-import React from 'react'
-import { BrowserRouter  as NavLink } from "react-router-dom";
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Link,
+  NavLink
+} from "react-router-dom";
 import SockLogo from "../pics/sockLogo01.png";
 import '../css/nav.css';
 
@@ -11,7 +15,8 @@ const Nav = () => {
         </div>
         <div className="buttons">
           <div className="drop navButtons">
-            shows
+            <div>shows</div>
+            <div className='yellow hover-bar'></div>
             <div className="dropContent">
               <div className="shows"><a href="./bhh" target="_blank" rel="noopener noreferrer" className="navLink">hearts</a></div>
               <div className="shows"><a href="./garden" target="_blank" rel="noopener noreferrer" className="navLink">garden</a></div>
@@ -19,8 +24,14 @@ const Nav = () => {
     					<div className="shows"><a href="./CTA" target="_blank" rel="noopener noreferrer" className="navLink">C.T.A.</a></div>
             </div>
           </div>
-          <NavLink className="navButtons sched" activeClassName="sched-select" to="/schedule">schedule</NavLink>
-    			<NavLink to="/about" className="navButtons about" activeClassName="about-select">about</NavLink>
+          <NavLink className="navButtons" activeClassName="selected" to="/schedule">
+            <div>schedule</div>
+            <div className='sched hover-bar'></div>
+          </NavLink>
+    			<NavLink to="/about" className="navButtons right-button" activeClassName="selected">
+            <div>about</div>
+            <div className='about hover-bar'></div>
+          </NavLink>
         </div>
       </nav>
   )

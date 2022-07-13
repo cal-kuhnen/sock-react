@@ -24,6 +24,21 @@
 	font-weight: bold;
 }
 
+@font-face
+{
+	font-family: "Univers";
+	src: url("../fonts/Univers/UniversLTStd.otf");
+}
+
+@font-face
+{
+	font-family: "Univers";
+	src: url("../fonts/Univers/UniversLTStd-Bold.otf");
+	font-weight: bold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Inter:wght@400;700&display=swap');
+
 html {
 	overflow-y: scroll;
 	height: 100%;
@@ -32,17 +47,24 @@ html {
 body
 {
   margin: 0;
-  background-color: #f2f2f8;
+  background-color: #f0f0f0;
 	line-height: normal;
 	overflow-x: hidden;
-	font-family: "TeX", sans-serif;
+	font-family: "Arimo", sans-serif;
 	padding-bottom: 5px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.static-content {
+  width: 60%;
+}
 /* --- Home Content --- */
 .h-content
 {
-  width: 60%;
   margin-top: 50px;
   height: auto;
   color: #000;
@@ -74,7 +96,6 @@ body
 
 .main
 {
-  width: 99%;
 	font-size: 5em;
 	font-weight: bold;
 	/*background-color: #fff;
@@ -95,7 +116,6 @@ p.bold
 	margin-top: 0;
 	font-weight: bold;
 	color: #000;
-	margin-left: 1%;
 }
 
 
@@ -115,9 +135,10 @@ a.schedLink
 	color: #000;
 }
 
-a:link
+a:link, a:visited
 {
   text-decoration: none;
+  color: #000;
 }
 
 

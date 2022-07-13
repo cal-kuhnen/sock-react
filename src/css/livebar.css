@@ -1,9 +1,9 @@
 .live-content
 {
 	width: 30%;
-	float: right;
-	margin-top: 50px;
-	margin-right: 2%;
+	margin-left: 65%;
+	margin-top: 20px;
+  position: fixed;
 }
 
 .audio
@@ -14,13 +14,13 @@
   display: flex;
   height: 200px;
   align-items: center;
-	font-family: "TeX";
+	font-family: "Arimo";
 	font-size: 5em;
 	font-weight: bold;
-	border-radius: 50px;
 	background-color: #fff;
-	box-shadow: 5px 5px 0px #000;
+	box-shadow: 0px 4px 0px #000;
 	transition: background-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .live
@@ -45,9 +45,8 @@
 #chat
 {
 	width: 100%;
-	border-radius: 50px;
 	background-color: #fff;
-	box-shadow: 5px 5px 0px #000;
+	box-shadow: 0px 4px 0px #000;
 	margin-top: 20px;
 	padding-bottom: 10px;
   padding-top: 10px;
@@ -61,7 +60,6 @@
 	width:90%;
 	height:400px;
 	top: 10px;
-	border-radius: 20px;
 }
 
 .audio:hover

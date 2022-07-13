@@ -2,113 +2,122 @@
 nav
 {
   position: relative;
-  font-family: "TeX", sans-serif;
-  width: 100%;
-  height: 200px;
+  font-family: "Arimo", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 3%;
 }
 
 .home
 {
-  width: 40%;
-  height: 160px;
-  margin-left: 2%;
+  height: 120px;
+  transition: background-color 0.2s linear;
+  padding: 10px 10px 0px 10px;
+}
+
+.home:hover {
+  box-shadow: 0px 2px 0px #000;
 }
 
 .buttons
 {
   display: flex;
   justify-content: space-between;
-  width: 60%;
-  margin-right: 2%;
 }
 
 .navButtons
 {
+  position: relative;
   color: #000;
   font-weight: bold;
   text-align: center;
-  font-size: 3.5em;
+  font-size: 3em;
   transition: color 0.2s, background-color 0.2s linear, box-shadow 0.2s;
 	/*border: solid 3px black;*/
-	border-radius: 20px;
-	padding: 0% 2% 0% 2%;
-	margin: 0px 5px 0px 5px;
-	background-color: #fff;
+	padding: 0px 20px 0px 20px;
+	margin: 0px 10px 0px 10px;
+  box-sizing: border-box;
 }
+
+  .hover-bar {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    transition: width 0.2s linear, left 0.2s linear;
+  }
+
+  .navButtons:hover > .hover-bar {
+    width: 100%;
+    left: 0;
+  }
+
+  .selected > .hover-bar {
+    width: 100%;
+    left: 0;
+  }
+
+  .yellow {
+    box-shadow: 0px 2px 0px #fff000;
+  }
 
 	.drop
 	{
-		box-shadow: 5px 5px 0px #fff000;
 		position: relative;
 		display: inline-block;
+    cursor: default;
 	}
-
-		.drop:hover
-		{
-			background-color: #fff8cc;
-		}
 
 	.sched
 	{
-		box-shadow: 5px 5px 0px #FF0000;
+		box-shadow: 0px 2px 0px #FF0000;
 	}
-
-  .sched-select
-  {
-    background-color: #ffdddd;
-  }
-
-		.sched:hover
-		{
-			background-color: #ffdddd;
-		}
 
 	.about
 	{
-		box-shadow: 5px 5px 0px #3333FF;
+		box-shadow: 0px 2px 0px #3333FF;
 	}
+
+  .right-button {
+    margin-right: 0px;
+  }
 
   .about-select
   {
     background-color: #ddddff;
   }
 
-		.about:hover
-		{
-			background-color: #ddddFF;
-		}
-
 .dropContent {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: opacity, visibility;
+  transition-duration: 0.2s, 0s;
+  transition-delay: 0s, 0.2s;
   position: absolute;
+  background-color: #fff;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
 }
 
 	.drop:hover .dropContent
 	{
-	  display: block;
+	  transition-delay: 0s, 0s;
+    visibility: visible;
+    opacity: 1;
 	}
 
 .shows
 {
 	top: 10px;
-	background-color: #fff;
 	/*border: solid 3px black;*/
-	border-radius: 20px;
 	margin-top: 15px;
 	padding: 0px 20px 0px 20px;
-	margin-left: -25px;
 	text-align: center;
-	box-shadow: 5px 5px 0px #000;
-	transition: background-color 0.1s, box-shadow 0.1s;
+	box-shadow: 0px 2px 0px #000;
 }
-
-	.shows:hover
-	{
-		background-color: #dddddd;
-	}
 
 	.shows:active
 	{

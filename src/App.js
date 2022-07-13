@@ -20,24 +20,26 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          <Nav />
+        <div className='container'>
+          <div className='static-content'>
+            <Nav />
+            <Switch>
+              <Route path='/schedule'>
+                <Schedule />
+              </Route>
+              <Route path='/about'>
+                <About />
+              </Route>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+            </Switch>
+          </div>
           <div className='live-content'>
             <Radio />
             <Chat />
           </div>
         </div>
-        <Switch>
-          <Route path='/schedule'>
-            <Schedule />
-          </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-        </Switch>
       </Router>
     )
   }
