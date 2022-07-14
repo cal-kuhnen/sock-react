@@ -28,7 +28,6 @@ ul
 .show > li
 {
 	font-weight: normal;
-  background-color: #fff;
 	color: #000;
 	margin-top: 1%;
 	box-shadow: 0px 3px 0px #000;
@@ -45,7 +44,6 @@ ul
 
 .contrast
 {
-	background-color: #fff;
 	box-shadow: 0px 3px 0px #000;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -54,7 +52,6 @@ ul
 
 .s-main
 {
-	background-color: #fff;
 	box-shadow: 0px 4px 0px #000;
 }
 

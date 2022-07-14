@@ -17,7 +17,6 @@
 	font-family: "Arimo";
 	font-size: 5em;
 	font-weight: bold;
-	background-color: #fff;
 	box-shadow: 0px 4px 0px #000;
 	transition: background-color 0.2s, box-shadow 0.2s;
   cursor: pointer;
@@ -44,22 +43,39 @@
 
 #chat
 {
+  position: relative;
 	width: 100%;
-	background-color: #fff;
-	box-shadow: 0px 4px 0px #000;
 	margin-top: 20px;
 	padding-bottom: 10px;
   padding-top: 10px;
   text-align: center;
   font-weight: bold;
   font-size: 2em;
+  overflow: hidden;
 }
 
-#minnit
+.chat-button {
+  margin-bottom: 0px;
+}
+
+.minnit
 {
-	width:90%;
-	height:400px;
-	top: 10px;
+	width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 0px;
+  transition-property: height;
+  transition-duration: 0.5s, 0s;
+  transition-delay: 0s, 0.5s;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0px 3px 0px #000;
+}
+
+.expanded {
+  transition-delay: 0s, 0s;
+  height: 400px;
+  padding-bottom: 20px;
 }
 
 .audio:hover
