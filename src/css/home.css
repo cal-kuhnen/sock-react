@@ -40,12 +40,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Inter:wght@400;700&display=swap');
 
 html {
-	overflow-y: scroll;
 	height: 100%;
+  overflow-y: scroll;
+  margin: 0;
 }
 
 body
 {
+  min-height: calc(100vh - 5px);
   margin: 0;
   background-color: #f0f0f0;
 	line-height: normal;
@@ -69,7 +71,7 @@ body
   height: auto;
   color: #000;
 	float: left;
-	margin-left: 2%;
+	margin-left: 3%;
 }
 
 .bhh-submit
@@ -151,9 +153,11 @@ img
 
 .footer
 {
-  font-family: "TeX", sans-serif;
+  margin-left: 3%;
+  position: absolute;
+  font-family: "Arimo", sans-serif;
   font-weight: bold;
-	margin-top: 300px;
+	bottom: 0px;
   color: #000;
   font-size: 2em;
 }

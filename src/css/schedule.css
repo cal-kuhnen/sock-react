@@ -55,6 +55,10 @@ ul
 	box-shadow: 0px 4px 0px #000;
 }
 
+.s-main > p::selection, li > .contrast::selection, li > a::selection {
+  background: #ffc0c0;
+}
+
 @media only screen and (max-width: 600px) {
   .content {
     width: 94%;

@@ -21,6 +21,9 @@
   padding-bottom: 5px;
 }
 
+.a-main > p::selection, .desc > p::selection {
+  background: #c0c0FF;
+}
 
 
 @media only screen and (max-width: 600px) {
