@@ -1,6 +1,5 @@
 /* --- Navbar ---*/
-nav
-{
+nav {
   position: relative;
   font-family: "Arimo", sans-serif;
   display: flex;
@@ -9,25 +8,24 @@ nav
   margin-left: 3%;
 }
 
-.home
-{
+.home {
+  position: relative;
   height: 120px;
   transition: background-color 0.2s linear;
   padding: 10px 10px 0px 10px;
 }
 
-.home:hover {
-  box-shadow: 0px 2px 0px #000;
+.home-link:hover > .hover-bar {
+  width: 100%;
+  left: 0;
 }
 
-.buttons
-{
+.buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.navButtons
-{
+.navButtons {
   position: relative;
   color: #000;
   font-weight: bold;
@@ -59,25 +57,26 @@ nav
     left: 0;
   }
 
+  .black {
+    box-shadow: 0px 2px 0px #000;
+  }
+
   .yellow {
     box-shadow: 0px 2px 0px #fff000;
   }
 
-	.drop
-	{
-		position: relative;
-		display: inline-block;
-    cursor: default;
-	}
-
-	.sched
-	{
+  .red {
 		box-shadow: 0px 2px 0px #FF0000;
 	}
 
-	.about
-	{
+	.blue {
 		box-shadow: 0px 2px 0px #3333FF;
+	}
+
+	.drop {
+		position: relative;
+		display: inline-block;
+    cursor: default;
 	}
 
   .right-button {

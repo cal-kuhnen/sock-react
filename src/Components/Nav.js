@@ -11,7 +11,10 @@ const Nav = () => {
   return(
       <nav>
         <div className="home">
-          <NavLink to="/" className="home-link" exact={true}><img src={SockLogo} alt="logo saying sock radio"/></NavLink>
+          <NavLink to="/" className="home-link" activeClassName='selected' exact={true}>
+            <img src={SockLogo} alt="logo saying sock radio"/>
+            <div className='black hover-bar'></div>
+          </NavLink>
         </div>
         <div className="buttons">
           <div className="drop navButtons">
@@ -26,11 +29,11 @@ const Nav = () => {
           </div>
           <NavLink className="navButtons" activeClassName="selected" to="/schedule">
             <div>schedule</div>
-            <div className='sched hover-bar'></div>
+            <div className='red hover-bar'></div>
           </NavLink>
     			<NavLink to="/about" className="navButtons right-button" activeClassName="selected">
             <div>about</div>
-            <div className='about hover-bar'></div>
+            <div className='blue hover-bar'></div>
           </NavLink>
         </div>
       </nav>
