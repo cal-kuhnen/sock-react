@@ -52,11 +52,11 @@
   font-weight: bold;
   font-size: 3em;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .chat-button {
   margin-bottom: 0px;
-  cursor: pointer;
 }
 
 .minnit

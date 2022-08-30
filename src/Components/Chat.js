@@ -8,8 +8,8 @@ const Chat = () => {
     setExpanded(!isExpanded);
   }
   return (
-    <div id="chat">
-      <div className='chat-button' onClick={collapseChat}>
+    <div id='chat' onClick={collapseChat}>
+      <div className='chat-button'>
         the sock drawer
       </div>
       <iframe className={isExpanded ? 'minnit expanded' : 'minnit'} title='sock radio chat box' src="https://minnit.chat/sockDrawer?embed&&nickname="></iframe>

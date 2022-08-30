@@ -59,10 +59,12 @@ body
 .container {
   display: flex;
   justify-content: space-between;
+  z-index: 10;
 }
 
 .static-content {
   width: 60%;
+  z-index: 10;
 }
 /* --- Home Content --- */
 .h-content

@@ -5,6 +5,7 @@ import Schedule from './Components/Schedule';
 import About from './Components/About';
 import Radio from './Components/Radio';
 import Chat from './Components/Chat';
+import Visualizer from './Components/Visualizer/Visualizer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,6 +22,7 @@ class App extends Component {
     return (
       <Router>
         <div className='container'>
+        <Visualizer />
           <div className='static-content'>
             <Nav />
             <Switch>
@@ -39,6 +41,7 @@ class App extends Component {
             <Radio />
             <Chat />
           </div>
+          
         </div>
       </Router>
     )
