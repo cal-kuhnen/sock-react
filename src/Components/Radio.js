@@ -3,10 +3,16 @@ import Visualizer from './Visualizer/Visualizer';
 import { Portal } from './Portal/Portal';
 
 var audio = new Audio("https://stream.sock.rocks/drive");
+audio.crossOrigin = "anonymous";
+const audioContext = new AudioContext();
+
+
 
 const Radio = () => {
 
   const [status, setStatus] = useState("loading...");
+  const [visualize, setVisualize] = useState(false);
+  const [analyser, setAnalyser] = useState(null);
 
   /* play/pause function. load() is called to catch stream live, otherwise if
      the stream loads, clicking play starts the audio from when it loaded not
@@ -15,8 +21,15 @@ const Radio = () => {
     if (status === '\u25BA') {
       console.log("playing audio");
       audio.load();
+      const analyser = audioContext.createAnalyser();
+      analyser.fftSize = 128;
+      const audioSrc = audioContext.createMediaElementSource(audio);
+      audioSrc.connect(analyser);
+      analyser.connect(audioContext.destination);
       audio.play();
+      setAnalyser(analyser);
       setStatus('I I');
+      setVisualize(true);
     }
     else if (status === 'I I') {
       console.log("pausing audio");
@@ -40,6 +53,7 @@ const Radio = () => {
     if (status === "loading..." || status ==='I I') {
       document.querySelector(".audio").className = "audio";
       setStatus("offline");
+      setVisualize(false);
     }
   }
 
@@ -66,10 +80,12 @@ const Radio = () => {
   });
 
   return (
-    <div className="audio" onClick={start}>
-      {status}
+    <div>
+      <div className="audio" onClick={start}>
+        {status}
+      </div>
       <Portal>
-        <Visualizer />
+        <Visualizer begin={visualize} audio={analyser}/>
       </Portal>
     </div>
   )
