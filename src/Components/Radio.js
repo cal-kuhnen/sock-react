@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Visualizer from './Visualizer/Visualizer';
+import { Portal } from './Portal/Portal';
 
 var audio = new Audio("https://stream.sock.rocks/drive");
 
@@ -66,16 +68,11 @@ const Radio = () => {
   return (
     <div className="audio" onClick={start}>
       {status}
+      <Portal>
+        <Visualizer />
+      </Portal>
     </div>
   )
 }
 
 export default Radio
-
-/*
-<audio id="media" preload="none">
-  <source src="https://stream.sock.rocks/kenny-test" type="audio/mpeg"></source>
-</audio>
-<button id="play">{'\u25BA'}</button>
-<p id="load">loading...</p>
-*/

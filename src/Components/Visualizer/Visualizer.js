@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { Vector3 } from 'three';
 import './visualizer.css'
 
 const Visualizer = () => {
@@ -16,19 +15,18 @@ const Visualizer = () => {
     renderer.setSize( window.innerWidth, window.innerHeight );
     mountRef.current.appendChild( renderer.domElement );
 
-    const size = 50;
-    const divisions = 50;
+    const size = 100;
+    const divisions = 100;
     const gridHelper = new THREE.GridHelper( size, divisions );
-    gridHelper.position.set(0,-2,0);
+    gridHelper.position.set(0,-3,0);
     scene.add( gridHelper );
     
-    var geometry = new THREE.SphereGeometry( 0.1 );
-    var material = new THREE.MeshStandardMaterial( { color: 0xffff00 } );
+    var geometry = new THREE.SphereGeometry( 0.15 );
+    var spheresArray = [];
 
-    var spheresArray = new Array;
-
-    for(var i = -4; i < 5; i++) {
-      for(var j = -4; j < 6; j++) {
+    for(var i = -25; i < 25; i++) {
+      for(var j = -25; j < 8; j++) {
+        var material = new THREE.MeshStandardMaterial( { color: 0xffff00 } );
         var sphere = new THREE.Mesh( geometry, material );
         sphere.position.set(i,-2,j);
         const sphereObject = {
@@ -44,21 +42,21 @@ const Visualizer = () => {
     const light = new THREE.AmbientLight( 0x404040 ); // soft white light
     scene.add( light );
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-    directionalLight.position.set(0,0,1);
+    directionalLight.position.set(0,0,5);
     scene.add( directionalLight );
 
     camera.position.z = 10;
     
     var clock = new THREE.Clock();
-    var animate = function () {
+    var animate = () => {
       var delta = clock.getDelta();
       var elapsed = clock.elapsedTime;
       requestAnimationFrame( animate );
 
       spheresArray.forEach(sphere => {
-        if(sphere.zPos === 2) {
-          sphere.mesh.position.y = Math.sin(elapsed) - 2;
-        }
+        var posY = sphere.mesh.position.y;
+        sphere.mesh.position.y = Math.sin((elapsed + sphere.mesh.position.z)*3) - 2;
+        sphere.mesh.material.color.setHSL(((posY + 3)/12), 1.0, 0.5);
       })
       renderer.render( scene, camera );
     };

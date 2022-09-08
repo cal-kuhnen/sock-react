@@ -6,6 +6,7 @@ import About from './Components/About';
 import Radio from './Components/Radio';
 import Chat from './Components/Chat';
 import Visualizer from './Components/Visualizer/Visualizer';
+import { PortalDiv } from './Components/Portal/Portal';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,8 +22,8 @@ class App extends Component {
 
     return (
       <Router>
+        <PortalDiv />
         <div className='container'>
-        <Visualizer />
           <div className='static-content'>
             <Nav />
             <Switch>

@@ -24,7 +24,7 @@
 
 .live
 {
-	box-shadow: 5px 5px 0px #000, inset 0px 0px 0px 6px #ff0000;
+	box-shadow: 0px 4px 0px #ff0000;
 }
 
 .live .notification
