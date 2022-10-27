@@ -16,15 +16,15 @@ const Visualizer = (props) => {
     mountRef.current.appendChild( renderer.domElement );
 
     const size = 100;
-    const divisions = 200;
+    const divisions = 100;
     const gridHelper = new THREE.GridHelper( size, divisions );
     gridHelper.position.set(0,0,0);
     scene.add( gridHelper );
     
-    var geometry = new THREE.SphereGeometry( 0.2 );
+    var geometry = new THREE.SphereGeometry( 0.5 );
     var spheresArray = [];
 
-    for(var i = -32; i < 32; i++) {
+    for(var i = -24; i < 24; i++) {
       for(var j = -8; j < 8; j++) {
         var material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
         var sphere = new THREE.Mesh( geometry, material );
@@ -40,7 +40,7 @@ const Visualizer = (props) => {
     }
 
     for(var i = -32; i < 32; i++) {
-      for(var j = -24; j < 16; j++) {
+      for(var j = -12; j < 12; j++) {
         if(j < -8 || j > 7) {
           var material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
           var sphere = new THREE.Mesh( geometry, material );
@@ -56,13 +56,13 @@ const Visualizer = (props) => {
     directionalLight.position.set(0,0,5);
     scene.add( directionalLight );
 
-    camera.position.z = 10;
-    camera.position.y = 3;
+    camera.position.set(0,5,16);
 
 
     var bufferLength;
     //console.log(bufferLength);
     var dataArray;
+    var filteredData;
     
     var clock = new THREE.Clock();
     var animate = () => {
@@ -71,21 +71,34 @@ const Visualizer = (props) => {
       requestAnimationFrame( animate );
 
       props.audio.getByteFrequencyData(dataArray);
+      var j = 16;
+      var k = 48;
+      for(var i = 0; i < 48; i++) {
+        if(i > 15) {
+          filteredData[i] = dataArray[j];
+          j += 4;
+        } else if(i > 47) {
+          filteredData[i] = dataArray[k];
+          k += 12;
+        } else {
+          filteredData[i] = dataArray[i];
+        }
+      }
 
       spheresArray.forEach(sphere => {
         var posY = sphere.mesh.position.y;
         const targetPosition = sphere.mesh.position.clone();
-        targetPosition.y = (dataArray[sphere.xPos + 32]/100) * (Math.cos(sphere.zPos/2.55) + 1);
+        targetPosition.y = (filteredData[sphere.xPos + 20]/100) * (Math.cos(sphere.zPos/2.55) + 1);
         sphere.mesh.position.lerp(targetPosition, 0.3);
-        sphere.mesh.material.color.setHSL(((posY)/12), 1.0, 0.5);
+        sphere.mesh.material.color.setHSL(((posY)/24), 1.0, 0.5);
       })
       renderer.render( scene, camera );
     };
 
     if(props.begin) {
       bufferLength = props.audio.frequencyBinCount;
-      console.log(bufferLength);
       dataArray = new Uint8Array(bufferLength);
+      filteredData = new Uint8Array(48);
       animate();
     } else {
       renderer.render( scene, camera );

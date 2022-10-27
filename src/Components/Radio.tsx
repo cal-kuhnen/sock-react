@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Visualizer from './Visualizer/Visualizer';
 import { Portal } from './Portal/Portal';
+import { AudioControls } from '../Constants/constants';
 
-var audio = new Audio("https://stream.sock.rocks/drive");
+let audio = new Audio("https://stream.sock.rocks/test");
+//var audio = new Audio(song2);
 audio.crossOrigin = "anonymous";
 const audioContext = new AudioContext();
 
@@ -10,31 +12,34 @@ const audioContext = new AudioContext();
 
 const Radio = () => {
 
-  const [status, setStatus] = useState("loading...");
+  const [status, setStatus] = useState(AudioControls.loading);
   const [visualize, setVisualize] = useState(false);
-  const [analyser, setAnalyser] = useState(null);
+  const [analyser, setAnalyser] = useState(null as AnalyserNode | null);
 
   /* play/pause function. load() is called to catch stream live, otherwise if
      the stream loads, clicking play starts the audio from when it loaded not
      at the current time */
   const start = () => {
-    if (status === '\u25BA') {
+    if (status === AudioControls.play && !analyser) {
       console.log("playing audio");
       audio.load();
       const analyser = audioContext.createAnalyser();
-      analyser.fftSize = 128;
+      analyser.fftSize = 256;
       const audioSrc = audioContext.createMediaElementSource(audio);
       audioSrc.connect(analyser);
       analyser.connect(audioContext.destination);
       audio.play();
       setAnalyser(analyser);
-      setStatus('I I');
+      setStatus(AudioControls.stop);
       setVisualize(true);
-    }
-    else if (status === 'I I') {
-      console.log("pausing audio");
+    } else if (status === AudioControls.play) {
+      audio.load();
+      audio.play();
+      setStatus(AudioControls.stop);
+    } else if (status === AudioControls.stop) {
+      console.log("stopping audio");
       audio.pause();
-      setStatus('\u25BA');
+      setStatus(AudioControls.play);
     }
   }
 
@@ -47,11 +52,16 @@ const Radio = () => {
       audio.load();
       loader();
       }
+    // audio.load();
+    // setStatus('\u25BA');
   }
 
   audio.onerror = () => {
-    if (status === "loading..." || status ==='I I') {
-      document.querySelector(".audio").className = "audio";
+    if (status === "loading..." || status === AudioControls.stop) {
+      let audioEl = document.querySelector(".audio");
+      if (audioEl != null) {
+        audioEl.className = "audio";
+      }
       setStatus("offline");
       setVisualize(false);
     }
@@ -59,16 +69,22 @@ const Radio = () => {
 
   // first check of stream for fastest load possible
   audio.onloadedmetadata = () => {
-    if (status !== '\u25BA' && status !== 'I I') {
-      document.querySelector(".audio").className = "audio live";
-      setStatus('\u25BA');
+    if (status !== AudioControls.play && status !== AudioControls.stop) {
+      let audioEl = document.querySelector(".audio");
+      if (audioEl != null) {
+        audioEl.className = "audio live";
+      }
+      setStatus(AudioControls.play);
     }
   }
 
   // handle end of stream to keep audio from looping, call load() to force error
   // which ensures loader() fails to run because of networkState being 3 (so dumb)
   audio.onended = () => {
-    document.querySelector(".audio").className = "audio";
+    let audioEl = document.querySelector(".audio");
+      if (audioEl != null) {
+        audioEl.className = "audio";
+      }
     audio.load();
   }
 
