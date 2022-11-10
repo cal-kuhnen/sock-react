@@ -4,7 +4,7 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-import SockLogo from "../pics/sockLogo01.png";
+import SockLogo from '../pics/sockLogo01.png';
 import '../css/nav.css';
 
 const Nav = () => {

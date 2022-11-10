@@ -5,7 +5,6 @@ import Schedule from './Components/Schedule';
 import About from './Components/About';
 import Radio from './Components/Radio';
 import Chat from './Components/Chat';
-import Visualizer from './Components/Visualizer/Visualizer';
 import { PortalDiv } from './Components/Portal/Portal';
 import {
   BrowserRouter as Router,
@@ -16,10 +15,7 @@ import './reset.css';
 import './css/livebar.css';
 
 class App extends Component {
-
-
   render() {
-
     return (
       <Router>
         <PortalDiv />
