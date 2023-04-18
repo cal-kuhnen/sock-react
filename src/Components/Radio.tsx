@@ -24,7 +24,7 @@ const Radio = () => {
       console.log("playing audio");
       audio.load();
       const analyser = audioContext.createAnalyser();
-      analyser.fftSize = 256;
+      analyser.fftSize = 4096;
       const audioSrc = audioContext.createMediaElementSource(audio);
       audioSrc.connect(analyser);
       analyser.connect(audioContext.destination);

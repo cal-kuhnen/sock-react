@@ -70,6 +70,15 @@ const Visualizer = (props: Visuals) => {
     let filteredData: Uint8Array;
     
     let clock = new THREE.Clock();
+
+    let freqNodePositions: number[] = [];
+    for(let i = 0; i < 16; i++) {
+      freqNodePositions[i] = i;
+    }
+    for(let i = 16; i <= 48; i++) {
+      freqNodePositions[i] = Math.floor(Math.pow(2, i/4));
+    }
+
     let animate = () => {
       let delta = clock.getDelta();
       let elapsed = clock.elapsedTime;
@@ -79,21 +88,13 @@ const Visualizer = (props: Visuals) => {
       let j = 16;
       let k = 48;
       for(let i = 0; i < 48; i++) {
-        if(i > 15) {
-          filteredData[i] = dataArray[j];
-          j += 4;
-        } else if(i > 47) {
-          filteredData[i] = dataArray[k];
-          k += 12;
-        } else {
-          filteredData[i] = dataArray[i];
-        }
+        filteredData[i] = dataArray[freqNodePositions[i]];
       }
 
       spheresArray.forEach(sphere => {
         let posY = sphere.mesh.position.y;
         const targetPosition = sphere.mesh.position.clone();
-        targetPosition.y = (filteredData[sphere.xPos + 20]/100) * (Math.cos(sphere.zPos/2.55) + 1);
+        targetPosition.y = (filteredData[sphere.xPos + 22]/100) * (Math.cos(sphere.zPos/2.55) + 1);
         sphere.mesh.position.lerp(targetPosition, 0.3);
         sphere.mesh.material.color.setHSL(((posY)/24), 1.0, 0.5);
       })
