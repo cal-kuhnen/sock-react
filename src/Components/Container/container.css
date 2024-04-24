@@ -8,12 +8,12 @@
 }
 
 .blur {
-  animation: background-blur 0.5s;
+  animation: background-blur 0.3s;
   animation-fill-mode: forwards;
 }
 
 .clear {
-  animation: background-clear 0.5s;
+  animation: background-clear 0.3s;
   animation-fill-mode: forwards;
 }
 
@@ -23,13 +23,13 @@
   }
 
   to {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
   }
 }
 
 @keyframes background-clear {
   from {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
   }
 
   to {

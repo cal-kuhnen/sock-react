@@ -46,9 +46,10 @@ const Visualizer = (props: Visuals) => {
     }
     
     // add static spheres
-    for(let i = -22; i < 24; i++) {
+    // something strange happens when stopping the visualization. one column of left side spheres disappear
+    for(let i = -48; i < 48; i++) {
       for(let j = -10; j < 10; j++) {
-        if(j < -8 || j > 7) {
+        if((j < -8 || j > 7) || (i < -22 || i > 23)) {
           let sphereMaterial = new THREE.MeshStandardMaterial( { color: 0xff0000, roughness: 0 } );
           let sphere = new THREE.Mesh( geometry, sphereMaterial );
           sphere.position.set(i,0,j);
