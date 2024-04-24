@@ -96,7 +96,7 @@ const Radio = () => {
     if (status === "offline") {
       loader();
     }
-  });
+  }, [status]);
 
   return (
     <div>

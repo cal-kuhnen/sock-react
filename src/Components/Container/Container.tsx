@@ -2,7 +2,8 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  useLocation
 } from "react-router-dom";
 import './container.css';
 import About from '../About';
@@ -14,7 +15,7 @@ import Nav from '../Nav';
 
 const Container = () => {
   return(
-    <div className='container'>
+    <div className={'container' + (useLocation().pathname === '/' ? ' clear' : ' blur')}>
       <div className='static-content'>
         <Nav />
         <Switch>

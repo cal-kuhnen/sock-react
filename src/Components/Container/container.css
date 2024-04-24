@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+
+.blur {
+  animation: background-blur 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.clear {
+  animation: background-clear 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes background-blur {
+  from {
+    backdrop-filter: blur(0px);
+  }
+
+  to {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes background-clear {
+  from {
+    backdrop-filter: blur(10px);
+  }
+
+  to {
+    backdrop-filter: blur(0px);
+  }
+}
