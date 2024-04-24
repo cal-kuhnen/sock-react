@@ -20,12 +20,6 @@ const Nav = () => {
           <div className="drop navButtons">
             <div>shows</div>
             <div className='yellow hover-bar'></div>
-            <div className="dropContent">
-              <div className="shows"><a href="./bhh" target="_blank" rel="noopener noreferrer" className="navLink">hearts</a></div>
-              <div className="shows"><a href="./garden" target="_blank" rel="noopener noreferrer" className="navLink">garden</a></div>
-    					<div className="shows"><a href="./ration" target="_blank" rel="noopener noreferrer" className="navLink">ration</a></div>
-    					<div className="shows"><a href="./CTA" target="_blank" rel="noopener noreferrer" className="navLink">C.T.A.</a></div>
-            </div>
           </div>
           <NavLink className="navButtons" activeClassName="selected" to="/schedule">
             <div>schedule</div>

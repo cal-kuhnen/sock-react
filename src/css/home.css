@@ -64,6 +64,21 @@ body
   width: 100%;
 }
 
+.blur {
+  animation: background-blur 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes background-blur {
+  from {
+    backdrop-filter: blur(0px);
+  }
+
+  to {
+    backdrop-filter: blur(10px);
+  }
+}
+
 .static-content {
   width: 60%;
   z-index: 10;

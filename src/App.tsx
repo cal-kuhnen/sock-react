@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Schedule from './Components/Schedule';
@@ -9,40 +9,22 @@ import { PortalDiv } from './Components/Portal/Portal';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  useLocation
 } from "react-router-dom";
 import './reset.css';
 import './css/livebar.css';
+import { Location } from "history";
+import Container from './Components/Container/Container';
 
-class App extends Component {
-  render() {
+
+const App = () => {
     return (
       <Router>
         <PortalDiv />
-        <div className='container'>
-          <div className='static-content'>
-            <Nav />
-            <Switch>
-              <Route path='/schedule'>
-                <Schedule />
-              </Route>
-              <Route path='/about'>
-                <About />
-              </Route>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-            </Switch>
-          </div>
-          <div className='live-content'>
-            <Radio />
-            <Chat />
-          </div>
-          
-        </div>
+        <Container />
       </Router>
     )
-  }
 }
 
 export default App

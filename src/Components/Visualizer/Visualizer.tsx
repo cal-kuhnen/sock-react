@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import './visualizer.css';
 import { SphereObject, Visuals } from './VisualizerModels';
+import { Cylindrical } from 'three';
 
 const Visualizer = (props: Visuals) => {
 
@@ -18,7 +19,7 @@ const Visualizer = (props: Visuals) => {
       mountRef.current.appendChild( renderer.domElement );
     }
 
-    const size = 100;
+    const size = 500;
     const divisions = 100;
     const gridHelper = new THREE.GridHelper( size, divisions );
     gridHelper.position.set(0,0,0);
@@ -26,13 +27,14 @@ const Visualizer = (props: Visuals) => {
     
     let geometry = new THREE.SphereGeometry( 0.5 );
     let spheresArray: SphereObject[] = [];
+    
 
     // add visualizer spheres
     for(let i = -24; i < 24; i++) {
       for(let j = -8; j < 8; j++) {
-        let material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
-        let sphere = new THREE.Mesh( geometry, material );
-        sphere.position.set(i,0,j/2);
+        let sphereMaterial = new THREE.MeshStandardMaterial( { color: 0xff0000, roughness: 0 } );
+        let sphere = new THREE.Mesh( geometry, sphereMaterial );
+        sphere.position.set(i,0,j);
         const sphereObject: SphereObject = {
           xPos: i,
           zPos: j,
@@ -44,33 +46,38 @@ const Visualizer = (props: Visuals) => {
     }
     
     // add static spheres
-    for(let i = -32; i < 32; i++) {
-      for(let j = -12; j < 12; j++) {
+    for(let i = -22; i < 24; i++) {
+      for(let j = -10; j < 10; j++) {
         if(j < -8 || j > 7) {
-          let material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
-          let sphere = new THREE.Mesh( geometry, material );
-          sphere.position.set(i,0,j/2);
+          let sphereMaterial = new THREE.MeshStandardMaterial( { color: 0xff0000, roughness: 0 } );
+          let sphere = new THREE.Mesh( geometry, sphereMaterial );
+          sphere.position.set(i,0,j);
           scene.add( sphere );
         }
       }
     }
 
     const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light );
+    // scene.add( light );
     let directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-    directionalLight.position.set(0,0,5);
+    directionalLight.position.set(5,10,5);
+    directionalLight.rotation.set(-0.4, -0.2, 0);
     scene.add( directionalLight );
 
-    camera.position.set(0,5,16);
+    let theta = 0;
+    camera.position.setFromCylindricalCoords(16,theta,6);
+    camera.rotation.set(-0.2,0,0);
 
 
     let bufferLength;
     //console.log(bufferLength);
     let dataArray: Uint8Array;
     let filteredData: Uint8Array;
-    
     let clock = new THREE.Clock();
 
+    // - generate array of values corresponding to a logarithmically scaled audio frequency array
+    // - first 16 values are not logarithmic due to duplicates when using Math.floor with this level
+    // of clarity (48 nodes from 4096 values)
     let freqNodePositions: number[] = [];
     for(let i = 0; i < 16; i++) {
       freqNodePositions[i] = i;
@@ -79,29 +86,35 @@ const Visualizer = (props: Visuals) => {
       freqNodePositions[i] = Math.floor(Math.pow(2, i/4));
     }
 
+    let targetPosition: THREE.Vector3;
+    let elapsed: number;
+
     let animate = () => {
       let delta = clock.getDelta();
-      let elapsed = clock.elapsedTime;
+      elapsed = clock.elapsedTime;
       requestAnimationFrame( animate );
 
       props.audio?.getByteFrequencyData(dataArray);
-      let j = 16;
-      let k = 48;
       for(let i = 0; i < 48; i++) {
         filteredData[i] = dataArray[freqNodePositions[i]];
       }
 
       spheresArray.forEach(sphere => {
-        let posY = sphere.mesh.position.y;
-        const targetPosition = sphere.mesh.position.clone();
+        targetPosition = sphere.mesh.position.clone();
         targetPosition.y = (filteredData[sphere.xPos + 22]/100) * (Math.cos(sphere.zPos/2.55) + 1);
-        sphere.mesh.position.lerp(targetPosition, 0.3);
-        sphere.mesh.material.color.setHSL(((posY)/24), 1.0, 0.5);
-      })
-      renderer.render( scene, camera );
+        sphere.mesh.position.lerp(targetPosition, 0.25);
+        sphere.mesh.material.color.setHSL(((targetPosition.y)/24), 1.0, 0.5);
+      });
+
+      // 60 fps
+      let interval = 1 / 60;
+
+      if (elapsed > interval) {
+          renderer.render( scene, camera );
+      }
     };
 
-    if(props.begin && props.audio) {
+    if(props.visualize && props.audio) {
       bufferLength = props.audio.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       filteredData = new Uint8Array(48);
@@ -111,7 +124,7 @@ const Visualizer = (props: Visuals) => {
     }
 
     return () => mountRef.current.removeChild( renderer.domElement);
-  }, [props.begin, props.audio]);
+  }, [props.visualize, props.audio]);
 
   return(
     <div ref={mountRef} className='scene'>

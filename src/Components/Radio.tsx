@@ -36,10 +36,12 @@ const Radio = () => {
       audio.load();
       audio.play();
       setStatus(AudioControls.stop);
+      setVisualize(true);
     } else if (status === AudioControls.stop) {
       console.log("stopping audio");
       audio.pause();
       setStatus(AudioControls.play);
+      // setVisualize(false);
     }
   }
 
@@ -47,6 +49,7 @@ const Radio = () => {
      checking the state does not work within here, hence using networkState to
      check if it should run */
   const loader = async () => {
+    console.log('recursing...');
     await new Promise(r => setTimeout(r, 10000));
     if (audio.networkState === 3 || audio.networkState === 0) {
       audio.load();
@@ -101,7 +104,7 @@ const Radio = () => {
         {status}
       </div>
       <Portal>
-        <Visualizer begin={visualize} audio={analyser}/>
+        <Visualizer visualize={visualize} audio={analyser}/>
       </Portal>
     </div>
   )

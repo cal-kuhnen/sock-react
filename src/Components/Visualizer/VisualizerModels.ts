@@ -1,7 +1,7 @@
 import { Mesh, MeshStandardMaterial, SphereGeometry } from "three";
 
 export interface Visuals {
-  begin: boolean;
+  visualize: boolean;
   audio: AnalyserNode | null;
 }
 
